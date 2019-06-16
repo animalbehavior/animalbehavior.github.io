@@ -1,0 +1,23 @@
+body {
+    font-size: 1.041666666vmax;
+}
+
+.content {
+    height: 100vh;
+    margin: auto;
+    text-align: center;
+    width: 50vw;
+}
+
+.grid {
+    align-items: center;
+    display: grid;
+    grid-gap: 1vmax;
+    grid-template-columns: repeat(3, auto);
+}
+
+.item {
+    border: 1px solid black;
+    cursor: pointer;
+    padding: 1vmax;
+}
