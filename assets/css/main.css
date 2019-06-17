@@ -1,12 +1,24 @@
 body {
-    font-size: 1.041666666vmax;
+    font: 1.041666666vmax Lato, sans-serif;
+    padding: 1vmax;
+}
+
+.content, .info {
+    border: 0.2vmax solid;
+    border-radius: 0.5vmax;
+    height: 100vh;
+    padding: 1.5vmax;
+    width: 50vw;
 }
 
 .content {
-    height: 100vh;
     margin: auto;
     text-align: center;
-    width: 50vw;
+}
+
+h1 {
+    font-family: 'Concert One', cursive;
+    margin-top: 0;
 }
 
 .grid {
@@ -17,7 +29,29 @@ body {
 }
 
 .item {
-    border: 1px solid black;
+    border: 0.2vmax inset;
+    border-radius: 0.5vmax;
     cursor: pointer;
     padding: 1vmax;
+    transition: border-style 0.1s, box-shadow 0.1s;
+}
+
+.item:hover {
+    border-style: outset;
+    box-shadow: 0.1vmax 0.1vmax;
+}
+
+.item:active {
+    border-style: inset;
+}
+
+.info {
+    background-color: white;
+    display: none;
+    position: absolute;
+}
+
+.info::before {
+    content: '\1F8A6';
+    display: none;
 }
