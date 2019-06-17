@@ -4,26 +4,56 @@
     // Bind to resize event
     const onResize = () => {
         // Make body flush with top of viewport
-        $(document.body).css('marginTop', 0).css('marginTop', $(document.body).outerHeight() - $(document.documentElement).outerHeight());
+        $(document.body)
+            .css('marginTop', 0)
+            .css('marginTop', $(document.body).outerHeight() - $(document.documentElement).outerHeight());
 
-        // Position info divs at position of main content
-        $('.info').css('left', parseFloat($(document.body).css('paddingLeft')) + parseFloat($('.content').css('marginLeft')))
-            .css('top', parseFloat($(document.body).css('paddingTop')) + parseFloat($('.content').css('marginTop')));
+        $('.info')
+            // Position info divs directly below main content
+            .css('left', parseFloat($(document.body).css('paddingLeft')) + parseFloat($('.content').css('marginLeft')))
+            .css('top', parseFloat($(document.body).css('paddingTop')) + parseFloat($('.content').css('marginTop')))
+            .css('marginTop', $('.content').outerHeight())
+            .each(function () {
+                if ($(this).data('shown')) {
+                    $(this)
+                        .show()
+                        .css('marginTop', 0)
+                        .find('.back')
+                        .css('lineHeight', $('.info > h2').css('lineHeight'));
+                }
+            });
     };
     onResize();
     $(window).resize(onResize);
 
-    // Increase grid item height on hover
     const deltaHeight = '1vh';
-    $('.item').hover(function () {
-        $(this).animate({
-            height: '+=' + deltaHeight,
-            lineHeight: '+=' + deltaHeight
-        }, 200);
-    }, function () {
-        $(this).animate({
-            height: '-=' + deltaHeight,
-            lineHeight: '-=' + deltaHeight
-        }, 200);
-    });
+    $('.item')
+        // Increase grid item height on hover
+        .hover(function () {
+            $(this).animate({height: '+=' + deltaHeight}, 200);
+        }, function () {
+            $(this).animate({height: '-=' + deltaHeight}, 200);
+        })
+        // Display info on click
+        .click(function () {
+            $(this).next()
+                .fadeIn(200)
+                .animate({marginTop: '0'}, {
+                    duration: 400,
+                    queue: false
+                })
+                .data('shown', true);
+        });
+
+    $('.back')
+        .css('lineHeight', $('.info > h2').css('lineHeight'))
+        .click(function () {
+            $(this).parent()
+                .removeData('shown')
+                .animate({marginTop: $('.content').outerHeight() + 'px'}, 400)
+                .fadeOut({
+                    duration: 200,
+                    queue: false
+                });
+        });
 })(jQuery);
