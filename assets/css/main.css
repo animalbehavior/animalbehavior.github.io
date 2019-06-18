@@ -68,3 +68,8 @@ h1 {
     margin-top: 0;
     text-align: center;
 }
+
+.footer {
+    margin-top: 1vmax;
+    position: absolute;
+}

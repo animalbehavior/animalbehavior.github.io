@@ -22,6 +22,11 @@
                         .css('lineHeight', $('.info > h2').css('lineHeight'));
                 }
             });
+
+        // Position footer at bottom of content
+        $('.footer').each(function () {
+            $(this).css('top', $('.content').outerHeight() - $(this).height() - parseFloat($('.content').css('paddingBottom')));
+        });
     };
     onResize();
     $(window).resize(onResize);
