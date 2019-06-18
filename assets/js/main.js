@@ -50,8 +50,20 @@
                 .data('shown', true);
         });
 
+    // Show credits on click
+    $('.footer > button').click(function () {
+        $('.credits')
+            .fadeIn(200)
+            .animate({marginTop: '0'}, {
+                duration: 400,
+                queue: false
+            })
+            .data('shown', true);
+    });
+
     $('.back')
         .css('lineHeight', $('.info > h2').css('lineHeight'))
+        // Go back to main content on click
         .click(function () {
             $(this).parent()
                 .removeData('shown')

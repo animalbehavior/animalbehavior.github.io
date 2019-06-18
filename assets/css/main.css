@@ -13,12 +13,12 @@ body {
 
 .content {
     margin: auto;
-    text-align: center;
 }
 
 h1 {
     font-family: 'Concert One', cursive;
     margin-top: 0;
+    text-align: center;
 }
 
 .grid {
@@ -72,4 +72,22 @@ h1 {
 .footer {
     margin-top: 1vmax;
     position: absolute;
+    width: 50vw;
+}
+
+.footer > button {
+    background-color: white;
+    border: 0.15vmax inset black;
+    border-radius: 0.375vmax;
+    cursor: pointer;
+    float: right;
+}
+
+.footer > button:hover {
+    border-style: outset;
+    box-shadow: 0.075vmax 0.075vmax;
+}
+
+.footer > button:active {
+    border-style: inset;
 }
